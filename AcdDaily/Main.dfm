@@ -88,10 +88,6 @@ object fmMain: TfmMain
     object TabSheet5: TTabSheet
       Caption = #20841#24180#24230#27604#36611#34920
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label5: TLabel
         Left = 4
         Top = 27
@@ -121,10 +117,6 @@ object fmMain: TfmMain
     object TabSheet2: TTabSheet
       Caption = 'ACD'#25509#32893#29575#26085#22577#34920
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label1: TLabel
         Left = 4
         Top = 27
@@ -169,10 +161,6 @@ object fmMain: TfmMain
     object TabSheet3: TTabSheet
       Caption = #29151#26989#34389#22238#38651#25928#29575#32113#35336#34920
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label3: TLabel
         Left = 4
         Top = 27
@@ -202,10 +190,6 @@ object fmMain: TfmMain
     object TabSheet4: TTabSheet
       Caption = #35347#32244#20491#20154#22238#38651#25928#29575#32113#35336#34920
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label4: TLabel
         Left = 4
         Top = 21

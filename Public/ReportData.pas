@@ -322,8 +322,8 @@ begin
       begin
         if Connected then Disconnect;
         Server := AServer;
-        Connect;
       end;
+      Connect;
     end;
     // Added by C45 2013/12/16 ¤U¤È 03:50:52
     with UniConnWinton do
