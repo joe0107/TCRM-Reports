@@ -264,7 +264,9 @@ type
     function  UseTimeFilter: Boolean;
     procedure PrepreData_WICSIPHH(ABegTime, AEndTime: TDateTime); // Added by Joe 2017/11/10 15:51:04
     //判斷是否為夜間值班日
-    function  IsNigthShift(ADate: TDateTime): Boolean;
+    function  IsNightShift(ADate: TDateTime): Boolean;
+    //判斷是否為國定假日 Added by Joe 2019/04/11 10:10:19
+    function  IsNationalHoliday(ADate: TDateTime): Boolean;
   private
     //計算統計來源資料
     procedure CalcData_PhoneIn(ASiteId: string);
@@ -604,6 +606,13 @@ begin
          (Pos(Copy(aFd_SALE003.AsString, 1, 2), aBranchList) = 0) then
       begin
         Next;
+        Continue;
+      end;
+      // Added by Joe 2019/04/11 10:12:42
+      // 國定假日資料不列入統計
+      if IsNationalHoliday(DateOf(aFd_IPHE004.AsDateTime)) then
+      begin
+        Delete;
         Continue;
       end;
       //只保留每通來電的第一次回電資訊
@@ -1231,6 +1240,11 @@ function TdmAcdSummary.CheckSiteDailyRec(ASiteId: string; ADate: TDateTime): Boo
 var
   A: Variant;
 begin
+  Result := False;
+  // Added by Joe 2019/04/11 10:38:48
+  if IsNationalHoliday(DateOf(ADate)) then
+    Exit;
+  //---------------------------------------------------------------------------
   A := VarArrayOf([ASiteId, ADate]);
 
   try
@@ -1535,7 +1549,10 @@ var
   A: Variant;
 begin
   Result := False;
-
+  // Added by Joe 2019/04/11 10:38:48
+  if IsNationalHoliday(DateOf(ADate)) then
+    Exit;
+  //---------------------------------------------------------------------------
   with mdAcdSwDaily do
   begin
     if not Active then Exit;
@@ -2817,7 +2834,7 @@ begin
   Result := (aTime > EncodeTime(20, 0, 0, 0));
   if Result then Exit;
   //如果不是夜間值班日，超過17:45的來電留言一律不列入計數
-  if not IsNigthShift(DateOf(mdAcdSrcIPHE004.AsDateTime)) then
+  if not IsNightShift(DateOf(mdAcdSrcIPHE004.AsDateTime)) then
     Result := (aTime > EncodeTime(17, 45, 0, 0));
 end;
 
@@ -2825,13 +2842,29 @@ procedure TdmAcdSummary.PrepreData_WICSIPHH(ABegTime, AEndTime: TDateTime);
 begin
   with qrWICSIPHH do
   begin
-    ParamByName('IPHH001B').Value := ABegTime;
-    ParamByName('IPHH001E').Value := AEndTime;
+    ParamByName('IPHH001B').AsDateTime := ABegTime;
+    ParamByName('IPHH001E').AsDateTime := AEndTime;
     if Active then Refresh else Open;
   end;
 end;
 
-function TdmAcdSummary.IsNigthShift(ADate: TDateTime): Boolean;
+function TdmAcdSummary.IsNationalHoliday(ADate: TDateTime): Boolean;
+var
+  A: Variant;
+begin
+  Result := False;
+
+  with qrWICSIPHH do
+  begin
+    if not Active then Exit;
+    A := VarArrayOf([ADate, '國定假日']);
+
+    if Locate('IPHH001;IPHH002', A, []) then
+      Result := True;
+  end;
+end;
+
+function TdmAcdSummary.IsNightShift(ADate: TDateTime): Boolean;
 var
   A: Variant;
 begin
@@ -2841,6 +2874,7 @@ begin
   begin
     if not Active then Exit;
     A := VarArrayOf([ADate, '夜間值班']);
+
     if Locate('IPHH001;IPHH002', A, []) then
       Result := True;
   end;

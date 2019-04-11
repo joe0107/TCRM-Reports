@@ -1338,7 +1338,7 @@ object dmAcdSummary: TdmAcdSummary
     Top = 48
   end
   object qrWICSIPHH: TUniQuery
-    Connection = connReport
+    Connection = dmReport.UniConnWinton
     SQL.Strings = (
       'SELECT * FROM WICSIPHH'
       'WHERE (IPHH001 >= :IPHH001B AND IPHH001 < :IPHH001E)')

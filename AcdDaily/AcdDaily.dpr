@@ -1,6 +1,11 @@
 program AcdDaily;
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   Forms,
   Main in 'Main.pas' {fmMain},
   ReportData in '..\Public\ReportData.pas' {dmReport: TDataModule},
