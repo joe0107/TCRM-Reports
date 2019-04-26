@@ -2122,7 +2122,8 @@ var
   function IsValidAcdData: Boolean;
   begin
     // 如果[ACD通數]與[ACD處理數]皆為0，此為無效的統計資料，不需要儲存
-    if(mdAcdTeDailyACD_ValidAns_Total.AsInteger = 0) and (mdAcdTeDailyACD_ValidAns_Total.AsInteger = 0) then
+    if (mdAcdTeDailyACD_ValidAns_Total.AsInteger = 0) and (mdAcdTeDailyACD_ValidAns_Total.AsInteger = 0) and
+       (mdAcdTeDailyDays.AsFloat = 0) then
       Result := False
     else
       Result := True;

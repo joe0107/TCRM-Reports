@@ -44,8 +44,8 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<DCC_MapFile>3</DCC_MapFile>
-			<VerInfo_Keys>FileVersion=0.0.0.116;LastCompiledTime=2019/04/11 10:40:19</VerInfo_Keys>
-			<VerInfo_Build>116</VerInfo_Build>
+			<VerInfo_Keys>FileVersion=0.0.0.122;LastCompiledTime=2019/04/26 13:59:50</VerInfo_Keys>
+			<VerInfo_Build>122</VerInfo_Build>
 			<DCC_Define>DEBUG;madExcept;$(DCC_Define)</DCC_Define>
 			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
 		</PropertyGroup>
@@ -99,8 +99,8 @@
 						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
 						<VersionInfo Name="MajorVer">19</VersionInfo>
 						<VersionInfo Name="MinorVer">12</VersionInfo>
-						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">116</VersionInfo>
+						<VersionInfo Name="Release">1</VersionInfo>
+						<VersionInfo Name="Build">122</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -112,7 +112,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">19.12.0.116</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">19.12.1.122</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>
@@ -120,7 +120,7 @@
 						<VersionInfoKeys Name="ProductName"/>
 						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
-						<VersionInfoKeys Name="LastCompiledTime">2019/04/11 10:39:00</VersionInfoKeys>
+						<VersionInfoKeys Name="LastCompiledTime">2019/04/26 13:59:50</VersionInfoKeys>
 					</VersionInfoKeys>
 				</Delphi.Personality>
 				<Platforms>
